@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sap-db'
+  database: 'sfl-db'
 });
 
 db.connect(err => {
