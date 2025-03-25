@@ -1,0 +1,24 @@
+{
+  "name": "sap-proyect",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "jasmine-core": "3.8",
+    "karma-jasmine-html-reporter": "^1.7.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "express": "^4.21.2",
+    "mysql2": "^3.13.0"
+  }
+}
