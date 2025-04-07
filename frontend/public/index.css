@@ -155,39 +155,51 @@ nav a:last-child {
 }
 
 .support-button {
-  position: absolute;
+  position: fixed; /* Cambiado de absolute a fixed */
   bottom: 10px;
   right: 10px;
   background-color: rgb(48, 48, 48);
   color: white;
-  width: 50px; /* Ajusta según el tamaño deseado */
-  height: 50px; /* Igual al width para hacerlo circular */
-  border-radius: 50%; /* Hace que el botón sea perfectamente redondo */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
-  transition: .5s;
-}
-
-.support-button-label {
-  display: none;
+  transition: 0.5s;
 }
 
 .support-button:hover {
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(255, 255, 255);
   color: rgb(48, 48, 48);
 
   transition: .5s;
+}
 
-  .support-button-label {
-    position: absolute;
-    bottom: 55px;
-    display: inline;
-    font-family: sans-serif;
-    font-size: 15px;
+.cart-shopping {
+  position: fixed;
+  top: 60px;
+  right: 0; /* Pegado al borde derecho */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  width: 60px;
+  height: 50px;
 
-    transition: 2s;
-  }
+  /* Solo redondear el lado izquierdo para el efecto "pestaña" */
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.cart-shopping:hover {
+  background-color: rgb(53, 53, 53);
+  color: rgb(255, 255, 255);
 }
