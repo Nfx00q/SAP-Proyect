@@ -13,6 +13,29 @@ app.listen(port, () => {
     console.log(`Servidor corriendo en ` + chalk.green('http://localhost:') + chalk.green(port));
 });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use('/public', express.static(path.join(__dirname, 'frontend/public')));
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/session/login/index.html'));
+});
+
+app.post('/api/login', (req, res) => {
+  const { email, pass } = req.body;
+  const query = 'SELECT * FROM usuario WHERE mail_us = ? AND pass_us = ?';
+
+  db.query(query, [email, pass], (err, results) => {
+    if (err) return res.status(500).send('Error del servidor');
+    if (results.length > 0) {
+      res.send('Login exitoso. Bienvenido ' + email);
+    } else {
+      res.send('Usuario o contraseña incorrectos');
+    }
+  });
+});
+
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -30,10 +53,4 @@ db.connect(err => {
     console.log(chalk.bold(`Conectado como: ${db.config.user}`))
     console.log('-------------------------------------------------------------------')
   }
-});
-
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/', 'index.html'));
 });
