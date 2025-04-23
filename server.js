@@ -3,6 +3,8 @@ const mysql = require('mysql2');
 const chalk = require('chalk');
 const path = require('path');
 
+const bcrypt = require('bcrypt');
+
 const app = express();
 const port = 3000;
 
@@ -22,19 +24,72 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/session/login/index.html'));
 });
 
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/session/register/index.html'));
+});
+
 app.post('/api/login', (req, res) => {
   const { email, pass } = req.body;
-  const query = 'SELECT * FROM usuario WHERE mail_us = ? AND pass_us = ?';
 
-  db.query(query, [email, pass], (err, results) => {
+  const query = 'SELECT * FROM usuario WHERE mail_us = ?';
+  db.query(query, [email], (err, results) => {
     if (err) return res.status(500).send('Error del servidor');
+
+    if (results.length === 0) {
+      return res.send('❌ Usuario o contraseña incorrectos');
+    }
+
+    const user = results[0];
+
+    bcrypt.compare(pass, user.pass_us, (err, isMatch) => {
+      if (err) return res.status(500).send('Error al verificar la contraseña');
+
+      if (isMatch) {
+        res.send('✅ Login exitoso. Bienvenido ' + user.nom_us);
+      } else {
+        res.send('❌ Usuario o contraseña incorrectos');
+      }
+    });
+  });
+});
+
+app.post('/api/register', async (req, res) => {
+  const { nom_us, mail_us, pass_us } = req.body;
+
+  if (!nom_us || !mail_us || !pass_us) {
+    return res.status(400).send('Faltan datos');
+  }
+
+  const checkQuery = 'SELECT * FROM usuario WHERE mail_us = ?';
+  db.query(checkQuery, [mail_us], async (err, results) => {
+    if (err) {
+      console.error('❌ Error en SELECT:', err);
+      return res.status(500).send('Error al verificar el correo: ' + err.message);
+    }
+
     if (results.length > 0) {
-      res.send('Login exitoso. Bienvenido ' + email);
-    } else {
-      res.send('Usuario o contraseña incorrectos');
+      return res.send('❌ Ya existe un usuario con ese correo');
+    }
+
+    try {
+      const hashedPassword = await bcrypt.hash(pass_us, 10);
+
+      const insertQuery = 'INSERT INTO usuario (nom_us, mail_us, pass_us, rol_id_rol) VALUES (?, ?, ?, 1)';
+      db.query(insertQuery, [nom_us, mail_us, hashedPassword, 1], (err, result) => {
+        if (err) {
+          console.error('❌ Error al insertar usuario:', err);
+          return res.status(500).send('Error al registrar: ' + err.message);
+        }
+
+        res.send('✅ Usuario registrado con éxito');
+      });
+    } catch (error) {
+      console.error('❌ Error en el proceso de registro:', error);
+      return res.status(500).send('Error interno del servidor');
     }
   });
 });
+
 
 const db = mysql.createConnection({
   host: 'localhost',
