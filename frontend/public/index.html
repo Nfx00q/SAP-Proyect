@@ -41,7 +41,7 @@
                 <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-success" id="login-button">Iniciar sesion</button>
+                <button type="button" class="btn btn-dark" id="login-button">Iniciar sesion</button>
                 <script>
                     document.getElementById("login-button").addEventListener("click", function () {
                         window.location.href = "/login";
@@ -52,43 +52,70 @@
           </div>
         </div>
       </nav>
-      
-      <div class="container" id="home-carousel">
-        <h1 id="carousel-tittle">Novedades</h1>
-        <div class="row" id="new-clothes">
-            <div class="col">
-                <img src="./Partials/Clothes/1.png" alt="">
-            </div>
-            <div class="col">
+
+      <!-- Carousel -->
+      <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+        
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row" id="new-clothes">
+              <div class="col">
+                  <img src="./Partials/Clothes/1.png" alt="">
+                  <div id="sale-tag">
+                    <label for="">50% OFF!</label>
+                  </div>
+              </div>
+              <div class="col">
+                  <img src="./Partials/Clothes/2.png" alt="">
+              </div>
+              <div class="col">
                 <img src="./Partials/Clothes/2.png" alt="">
             </div>
-            <div class="col">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row" id="new-clothes">
+              <div class="col">
                 <img src="./Partials/Clothes/3.png" alt="">
+              </div>
+              <div class="col">
+                  <img src="./Partials/Clothes/4.png" alt="">
+              </div>
+              <div class="col">
+                <img src="./Partials/Clothes/2.png" alt="">
+              </div>
             </div>
-            <div class="col">
-                <img src="./Partials/Clothes/4.png" alt="">
-            </div>
-            <div class="col">
+          </div>
+          <div class="carousel-item">
+            <div class="row" id="new-clothes">
+              <div class="col">
                 <img src="./Partials/Clothes/5.png" alt="">
+              </div>
+              <div class="col">
+                <img src="./Partials/Clothes/2.png" alt="">
+              </div>
+              <div class="col">
+                <img src="./Partials/Clothes/2.png" alt="">
+              </div>
             </div>
+          </div>
         </div>
-        <div class="row" id="new-clothes-variants">
-            <div class="col">
-                <img src="./Partials/Clothes/1.1.png" alt="">
-            </div>
-            <div class="col">
-                <img src="./Partials/Clothes/2.1.png" alt="">
-            </div>
-            <div class="col">
-                <img src="./Partials/Clothes/3.1.png" alt="">
-            </div>
-            <div class="col">
-                <img src="./Partials/Clothes/4.1.png" alt="">
-            </div>
-            <div class="col">
-                <img src="./Partials/Clothes/5.1.png" alt="">
-            </div>
-        </div>
+        
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
 </body>
 </html>
