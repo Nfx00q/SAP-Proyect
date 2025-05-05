@@ -15,6 +15,80 @@
 </head>
 
 <body>
-    
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">SoloFlayba</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Catalogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sobre nosotros</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-success" id="login-button">Iniciar sesion</button>
+                <script>
+                    document.getElementById("login-button").addEventListener("click", function () {
+                        window.location.href = "/login";
+                      });
+                </script>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="container" id="home-carousel">
+        <h1 id="carousel-tittle">Novedades</h1>
+        <div class="row" id="new-clothes">
+            <div class="col">
+                <img src="./Partials/Clothes/1.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/2.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/3.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/4.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/5.png" alt="">
+            </div>
+        </div>
+        <div class="row" id="new-clothes-variants">
+            <div class="col">
+                <img src="./Partials/Clothes/1.1.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/2.1.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/3.1.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/4.1.png" alt="">
+            </div>
+            <div class="col">
+                <img src="./Partials/Clothes/5.1.png" alt="">
+            </div>
+        </div>
+      </div>
 </body>
 </html>

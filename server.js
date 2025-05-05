@@ -20,6 +20,10 @@ app.use(express.json());
 
 app.use('/public', express.static(path.join(__dirname, 'frontend/public')));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/public/index.html'));
+});
+
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/session/login/index.html'));
 });
