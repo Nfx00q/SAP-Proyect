@@ -1,121 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Start Page / Solo Flayba</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
 
-    <script src="https://kit.fontawesome.com/65448a561c.js" crossorigin="anonymous"></script>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/65448a561c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">SoloFlayba</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Catalogo</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sobre nosotros</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-              </li>
-              <li class="nav-item">
-                <button type="button" class="btn btn-dark" id="login-button">Iniciar sesion</button>
-                <script>
-                    document.getElementById("login-button").addEventListener("click", function () {
-                        window.location.href = "/login";
-                      });
-                </script>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <body>
+    <nav class="navbar bg-light navbar-light">
+      <div class="container-fluid" id="navbar-links">
+        <a class="navbar-brand" href="#">SoloFlayba</a>
 
-      <!-- Carousel -->
-      <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <ul class="navbar-nav d-flex flex-row">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Catalogo</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Sobre nosotros</a>
+          </li>
+        </ul>
 
-        <!-- Indicators/dots -->
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
-        
-        <!-- The slideshow/carousel -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row" id="new-clothes">
-              <div class="col">
-                  <img src="./Partials/Clothes/1.png" alt="">
-                  <div id="sale-tag">
-                    <label for="">50% OFF!</label>
-                  </div>
-              </div>
-              <div class="col">
-                  <img src="./Partials/Clothes/2.png" alt="">
-              </div>
-              <div class="col">
-                <img src="./Partials/Clothes/2.png" alt="">
-            </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row" id="new-clothes">
-              <div class="col">
-                <img src="./Partials/Clothes/3.png" alt="">
-              </div>
-              <div class="col">
-                  <img src="./Partials/Clothes/4.png" alt="">
-              </div>
-              <div class="col">
-                <img src="./Partials/Clothes/2.png" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row" id="new-clothes">
-              <div class="col">
-                <img src="./Partials/Clothes/5.png" alt="">
-              </div>
-              <div class="col">
-                <img src="./Partials/Clothes/2.png" alt="">
-              </div>
-              <div class="col">
-                <img src="./Partials/Clothes/2.png" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
+        <ul class="navbar-nav d-flex flex-row ms-auto align-items-center">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#"
+              ><i class="fa-solid fa-cart-shopping"></i
+            ></a>
+          </li>
+          <li class="nav-item mx-2">
+            <button type="button" class="btn btn-dark" id="login-button">
+              Iniciar sesión
+            </button>
+            <script>
+              document
+                .getElementById("login-button")
+                .addEventListener("click", function () {
+                  window.location.href = "/login";
+                });
+            </script>
+          </li>
+        </ul>
       </div>
-</body>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row" id="new-clothes">
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row" id="new-clothes">
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row" id="new-clothes">
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+            <div class="col">
+              <img src="./Partials/Clothes/stock-clothe.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <ul class="nav nav-tabs" id="home-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#menu1">Favoritos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu2">Winter 2025</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu3">Accesorios</a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="home-tabs-content">
+      <div class="tab-pane container active" id="menu1">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
+          <div class="col">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
+                <p id="clothe-stars">
+                  ★★★★☆
+                </p>
+              </div>
+              <div class="card-body p-0">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-1 pt-1">Stock clothe</p>
+                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
+                </div>
+                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
+                <p id="clothe-stars">
+                  ★★★★☆
+                </p>
+              </div>
+              <div class="card-body p-0">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-1 pt-1">Stock clothe</p>
+                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
+                </div>
+                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
+                <p id="clothe-stars">
+                  ★★★★☆
+                </p>
+              </div>
+              <div class="card-body p-0">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-1 pt-1">Stock clothe</p>
+                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
+                </div>
+                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card border-0 h-100">
+              <div class="position-relative">
+                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
+                <p id="clothe-stars">
+                  ★★★★☆
+                </p>
+              </div>
+              <div class="card-body p-0">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-1 pt-1">Stock clothe</p>
+                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
+                </div>
+                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+
+      <div class="tab-pane container fade" id="menu2">
+        
+      </div>
+
+      <div class="tab-pane container fade" id="menu3">
+        
+      </div>
+    </div>
+  </body>
 </html>
