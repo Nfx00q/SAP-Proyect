@@ -41,6 +41,20 @@ async function createTables() {
       FOREIGN KEY (categoria_id_categoria) REFERENCES categoria(id_categoria)
     );`,
 
+    `CREATE TABLE IF NOT EXISTS resenia_producto (
+      id_resenia INT AUTO_INCREMENT,
+      usuario_id_us INT NOT NULL,
+      producto_id_producto INT NOT NULL,
+      calidad_prod INT CHECK (calidad_prod BETWEEN 1 AND 5),
+      creatividad_prod INT CHECK (calidad_prod BETWEEN 1 AND 5),
+      estilo_prod INT CHECK (calidad_prod BETWEEN 1 AND 5),
+      comentario TEXT,
+      fecha_resenia DATETIME DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (id_resenia),
+      FOREIGN KEY (usuario_id_us) REFERENCES usuario(id_us),
+      FOREIGN KEY (producto_id_producto) REFERENCES producto(id_producto)
+    );`,
+
     `CREATE TABLE IF NOT EXISTS color (
       id_color INT AUTO_INCREMENT PRIMARY KEY,
       nom_color VARCHAR(50) NOT NULL
