@@ -44,19 +44,6 @@
     font-weight: 600;
 }
 
-#clothe-stars {
-    position: absolute;
-    bottom: -13px;
-    left: 12px;
-    font-size: 20px;
-}
-
-#clothe-addtocart {
-    margin-top: 10px;
-}
-
-/* RESPONSIVE */
-
 @media (max-width: 601px) {
     #navbar-links a {
         font-size: 14px;
@@ -78,3 +65,54 @@
         display: none;
     }
 }
+
+#clothe-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+  }
+
+  #clothe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .producto-info h5 {
+    font-weight: bold;
+  }
+
+  .producto-info p {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    color: #333;
+    font: caption;
+    text-align: right;
+  }
+
+  .tallas-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .talla-item {
+    padding: 4px 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    background-color: #f8f8f8;
+  }
+
+  .precio {
+    font-size: 1.5rem;
+    font-weight: bold !important;
+    color: #111;
+  }

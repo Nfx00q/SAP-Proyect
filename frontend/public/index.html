@@ -63,9 +63,7 @@
       </div>
     </nav>
 
-    <!-- Carousel -->
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
-      <!-- Indicators/dots -->
       <div class="carousel-indicators">
         <button
           type="button"
@@ -85,7 +83,6 @@
         ></button>
       </div>
 
-      <!-- The slideshow/carousel -->
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row" id="new-clothes">
@@ -128,10 +125,12 @@
         </div>
       </div>
     </div>
-    
+
     <ul class="nav nav-tabs" id="home-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" href="#menu1">Favoritos</a>
+        <a class="nav-link active" data-bs-toggle="tab" href="#menu1"
+          >Favoritos</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="tab" href="#menu2">Winter 2025</a>
@@ -140,91 +139,56 @@
         <a class="nav-link" data-bs-toggle="tab" href="#menu3">Accesorios</a>
       </li>
     </ul>
-    
+
     <div class="tab-content" id="home-tabs-content">
       <div class="tab-pane container active" id="menu1">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
-          <div class="col">
-            <div class="card border-0 h-100">
-              <div class="position-relative">
-                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
-                <p id="clothe-stars">
-                  ★★★★☆
-                </p>
-              </div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between">
-                  <p class="mb-1 pt-1">Stock clothe</p>
-                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
-                </div>
-                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
+        <div class="row" id="productos-container"></div>
 
-          <div class="col">
-            <div class="card border-0 h-100">
-              <div class="position-relative">
-                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
-                <p id="clothe-stars">
-                  ★★★★☆
-                </p>
-              </div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between">
-                  <p class="mb-1 pt-1">Stock clothe</p>
-                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
-                </div>
-                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
+        <script>
+          async function cargarProductos() {
+            const res = await fetch("/productos");
+            const productos = await res.json();
+            const container = document.getElementById("productos-container");
 
-          <div class="col">
-            <div class="card border-0 h-100">
-              <div class="position-relative">
-                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
-                <p id="clothe-stars">
-                  ★★★★☆
-                </p>
-              </div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between">
-                  <p class="mb-1 pt-1">Stock clothe</p>
-                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
-                </div>
-                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
+            productos.forEach((producto) => {
+              const imgUrl = producto.img?.[0] || "default.jpg";
 
-          <div class="col">
-            <div class="card border-0 h-100">
-              <div class="position-relative">
-                <img src="./Partials/Clothes/stock-clothe.png" class="card-img-top" alt="Stock clothe">
-                <p id="clothe-stars">
-                  ★★★★☆
-                </p>
-              </div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between">
-                  <p class="mb-1 pt-1">Stock clothe</p>
-                  <p class="mb-1 text-end fw-bold pt-1">$39.990</p>
-                </div>
-                <button type="button" class="btn btn-dark w-100" id="clothe-addtocart">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>      
+              const tallasUnicas = [
+                ...new Set(producto.variantes.map((v) => v.talla)),
+              ].filter(Boolean);
 
-      <div class="tab-pane container fade" id="menu2">
-        
+              const tallasHTML = tallasUnicas
+                .map((t) => `<span class="talla-item">${t}</span>`)
+                .join("");
+
+              const div = document.createElement("div");
+              div.className = "col-md-4 mb-4";
+              div.innerHTML = `
+                <div id="clothe-card">
+                  <img src="${imgUrl}" alt="${producto.nom_producto}">
+                  <div class="producto-info">
+                    <h5>${producto.nom_producto}</h5>
+                    <p style="text-align: left;">${producto.des_producto}</p>
+                    <p class="precio">
+                      $${Math.min(
+                        ...producto.variantes.map((v) => Number(v.precio))
+                      ).toLocaleString()}
+                    </p>
+                    <div class="tallas-container">${tallasHTML}</div>
+                  </div>
+                </div>
+              `;
+              container.appendChild(div);
+            });
+          }
+
+          cargarProductos();
+        </script>
       </div>
 
-      <div class="tab-pane container fade" id="menu3">
-        
-      </div>
+      <div class="tab-pane container fade" id="menu2"></div>
+
+      <div class="tab-pane container fade" id="menu3"></div>
     </div>
   </body>
 </html>
