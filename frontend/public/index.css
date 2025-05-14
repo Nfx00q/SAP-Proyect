@@ -67,21 +67,22 @@
 }
 
 #clothe-card {
-    border: 1px solid #ddd;
     border-radius: 12px;
     padding: 16px;
     text-align: left;
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     margin-top: 20px;
   }
 
   #clothe-card img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 4 / 5; /* Ajusta según tu diseño */
+    object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 12px;
-  }
+    margin-bottom: 10px;
+    }
+
 
   .producto-info h5 {
     font-weight: bold;
@@ -104,11 +105,10 @@
 
   .talla-item {
     padding: 4px 12px;
-    border: 1px solid #333;
     border-radius: 4px;
     font-size: 0.85rem;
     text-transform: uppercase;
-    background-color: #f8f8f8;
+    background-color: #ececec;
   }
 
   .precio {
