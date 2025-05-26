@@ -22,28 +22,20 @@
   <body>
     <nav class="navbar bg-light navbar-light">
       <div class="container-fluid" id="navbar-links">
-        <a class="navbar-brand" href="#">SoloFlayba</a>
+        <a class="navbar-brand" href="/">SoloFlayba</a>
 
         <ul class="navbar-nav d-flex flex-row">
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" href="/catalog">Catalogo</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Catalogo</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Sobre nosotros</a>
+            <a class="nav-link" href="/about-us">Sobre nosotros</a>
           </li>
         </ul>
 
         <ul class="navbar-nav d-flex flex-row ms-auto align-items-center">
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#"
-              ><i class="fa-solid fa-magnifying-glass"></i
-            ></a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="/cart"
               ><i class="fa-solid fa-cart-shopping"></i
             ></a>
           </li>
@@ -63,7 +55,12 @@
       </div>
     </nav>
 
-    <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div
+      id="demo"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="3000"
+    >
       <div class="carousel-indicators">
         <button
           type="button"
@@ -152,11 +149,9 @@
 
             productos.forEach((producto) => {
               const imgUrl = producto.img?.[0] || "default.jpg";
-
               const tallasUnicas = [
                 ...new Set(producto.variantes.map((v) => v.talla)),
               ].filter(Boolean);
-
               const tallasHTML = tallasUnicas
                 .map((t) => `<span class="talla-item">${t}</span>`)
                 .join("");
@@ -164,37 +159,80 @@
               const div = document.createElement("div");
               div.className = "col-md-4 col-6 col-lg-3";
               div.innerHTML = `
-                <div id="clothe-card">
-                  <img src="${imgUrl}" alt="${producto.nom_producto}">
-                  <div class="producto-info">
-                    <h5>${producto.nom_producto}</h5>
-                    <p style="text-align: left;">${producto.des_producto}</p>
-                    <p class="precio">
-                      ${
-                        (function () {
-                          const preciosValidos = producto.variantes
-                            .map((v) => Number(v.precio))
-                            .filter((n) => !isNaN(n) && isFinite(n));
-                          return preciosValidos.length
-                            ? `$${Math.min(...preciosValidos).toLocaleString()}`
-                            : "Precio no disponible";
-                        })()
-                      }
-                    </p>
-                    <div class="tallas-container">${tallasHTML}</div>
-                  </div>
-                </div>
-              `;
+            <div id="clothe-card" data-bs-toggle="modal" data-bs-target="#clothe-modal" data-producto='${JSON.stringify(
+              producto
+            )}'>
+              <img src="${imgUrl}" alt="${producto.nom_producto}">
+              <div class="producto-info">
+                <h5>${producto.nom_producto}</h5>
+                <p style="text-align: left;">${producto.des_producto}</p>
+                <p class="precio">
+                  ${(function () {
+                    const preciosValidos = producto.variantes
+                      .map((v) => Number(v.precio))
+                      .filter((n) => !isNaN(n) && isFinite(n));
+                    return preciosValidos.length
+                      ? `$${Math.min(...preciosValidos).toLocaleString()}`
+                      : "Precio no disponible";
+                  })()}
+                </p>
+                <div class="tallas-container">${tallasHTML}</div>
+              </div>
+            </div>
+          `;
               container.appendChild(div);
             });
+
+            document.querySelectorAll("#clothe-card").forEach((card) => {
+              card.addEventListener("click", (e) => {
+                const producto = JSON.parse(e.currentTarget.dataset.producto);
+                actualizarModal(producto);
+              });
+            });
+          }
+
+          function actualizarModal(producto) {
+            const modal = document.getElementById("clothe-modal");
+            const imgUrl = producto.img?.[0] || "default.jpg";
+            
+            const tallasUnicas = [
+              ...new Set(producto.variantes.map((v) => v.talla)),
+            ].filter(Boolean);
+
+            const tallasHTML = tallasUnicas
+              .map((t) => `<span class="talla-item">${t}</span>`)
+              .join("");
+
+            const preciosValidos = producto.variantes
+              .map((v) => Number(v.precio))
+              .filter((n) => !isNaN(n) && isFinite(n));
+
+            const precio = preciosValidos.length
+              ? `$${Math.min(...preciosValidos).toLocaleString()}`
+              : "Precio no disponible";
+
+            modal.querySelector(".modal-content").innerHTML = `
+              <div class="modal-body">
+                <img src="${imgUrl}" alt="${producto.nom_producto}" style="width: 100%; object-fit: cover;">
+                <label id="modal-nom_producto">${producto.nom_producto}</label>
+                <label id="modal-precio_producto">${precio}</precio>
+              </div>
+            `;
           }
 
           cargarProductos();
         </script>
       </div>
 
-      <div class="tab-pane container fade" id="menu2"></div>
+      <div class="modal fade" id="clothe-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            
+          </div>
+        </div>
+      </div>
 
+      <div class="tab-pane container fade" id="menu2"></div>
       <div class="tab-pane container fade" id="menu3"></div>
     </div>
   </body>

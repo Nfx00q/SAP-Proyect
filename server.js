@@ -95,6 +95,14 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/session/register/index.html'));
 });
 
+app.get('/cart', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/cart/index.html'));
+});
+
+app.get('/catalog', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/catalog/index.html'));
+});
+
 app.post('/api/login', async (req, res) => {
   const { email, pass } = req.body;
 

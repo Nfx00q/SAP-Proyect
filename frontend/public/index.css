@@ -116,3 +116,48 @@
     font-weight: bold !important;
     color: #111;
   }
+
+#clothe-modal .modal-content {
+        background-color: rgb(255, 255, 255); 
+      }
+
+      #clothe-modal .modal-body img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+        position: relative;
+        box-shadow: 0 0 -10px black;
+      }
+
+#clothe-modal .modal-header {
+        outline: none;
+        border: none;
+      }
+
+      .btn-close {
+        color: white;
+      }
+
+#modal-nom_producto {
+    position: absolute;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    bottom: -50px;
+    left: 0;
+    padding: 5px 15px;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+#modal-precio_producto {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 15px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-family: sans-serif;
+}
